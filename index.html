@@ -7,12 +7,23 @@
 </head>
 
 <body>
-  <div style="border:1px;">
-    <form>
+  <div style="border:1px solid royalblue; padding:24px;">
+    <form id="form">
       <label for="fname">First name:</label>
       <input type="text" id="fname" name="fname">
+      <input type="submit">
     </form>
   </div>
 </body>
+
+<script>
+  function logSubmit(e) {
+    e.preventDefault();
+    const firstName = document.getElementById('fname');
+    console.log(firstName.value.trim());
+  }
+  const form = document.getElementById('form');
+  form.addEventListener('submit', logSubmit);
+</script>
 
 </html>
