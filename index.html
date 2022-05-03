@@ -3,10 +3,13 @@
 
 <head>
   <meta charset="utf-8">
+
   <title>Mr. Anderson's Website</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body style="padding: 24px;">
   <div style="border:1px solid royalblue; padding:24px;">
     <form id="form">
       <label for="fname">First name:</label>
@@ -14,13 +17,36 @@
       <input type="submit">
     </form>
   </div>
+  <div id="results" style="padding:12px;"></div>
 </body>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
+</script>
 <script>
   function logSubmit(e) {
     e.preventDefault();
-    const firstName = document.getElementById('fname');
-    console.log(firstName.value.trim());
+    const firstName = document.getElementById('fname').value.trim();
+    
+    var myrng = new Math.seedrandom(firstName);
+
+    const results = document.getElementById('results');
+    results.innerHTML = `
+      <table>
+        <tr>
+          <td>First Name: </td>
+          <td>${firstName}</td>
+        </tr>
+        <tr>
+          <td>Number of Sides: </td>
+          <td>${Math.floor(myrng() * 16) + 5}</td>
+        </tr>
+        <tr>
+          <td>Radius: </td>
+          <td>${Math.floor(myrng() * 16) + 5}</td>
+        </tr>
+      </table>
+    `
   }
   const form = document.getElementById('form');
   form.addEventListener('submit', logSubmit);
