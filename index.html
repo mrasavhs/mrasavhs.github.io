@@ -28,7 +28,7 @@
     e.preventDefault();
     const firstName = document.getElementById('fname').value.trim();
     
-    var myrng = new Math.seedrandom(firstName);
+    var myrng = new Math.seedrandom(firstName + "geometry");
 
     const results = document.getElementById('results');
     results.innerHTML = `
